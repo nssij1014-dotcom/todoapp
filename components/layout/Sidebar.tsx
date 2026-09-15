@@ -15,18 +15,23 @@ export default function Sidebar() {
 
   return (
     <aside className="w-56 shrink-0 border-r border-hairline bg-canvas p-4">
-      <div className="text-lg font-bold text-primary mb-6">할일 + 계획</div>
-      <nav className="flex flex-col gap-1">
+      <div className="mb-8">
+        <div className="text-base font-bold uppercase tracking-[1.5px] text-ink">
+          Todo + Plan
+        </div>
+        <div className="m-stripe h-[3px] w-10 mt-2" />
+      </div>
+      <nav className="flex flex-col">
         {NAV_ITEMS.map((item) => {
           const active = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-full px-3 py-2 text-sm transition-colors ${
+              className={`border-l-2 px-3 py-2.5 text-sm font-bold uppercase tracking-[0.5px] transition-colors ${
                 active
-                  ? "bg-surface-strong font-semibold text-ink"
-                  : "text-body hover:bg-surface-soft"
+                  ? "border-l-m-red text-ink"
+                  : "border-l-transparent text-muted hover:text-body hover:border-l-hairline"
               }`}
             >
               {item.label}

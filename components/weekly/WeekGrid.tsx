@@ -30,21 +30,21 @@ export default function WeekGrid({ weeklyPlanId, todos }: WeekGridProps) {
   };
 
   return (
-    <div className="grid grid-cols-7 gap-2">
+    <div className="grid grid-cols-7 gap-px bg-hairline">
       {DAY_LABELS.map((label, day) => {
         const dayTodos = todos.filter((t) => t.dayOfWeek === day);
         return (
           <div
             key={day}
-            className="rounded-md border border-hairline bg-canvas p-2 min-h-32 flex flex-col gap-1"
+            className="bg-surface-soft p-2 min-h-32 flex flex-col gap-1"
           >
-            <div className="text-xs font-semibold text-muted mb-1">
+            <div className="text-[10px] font-bold uppercase tracking-[0.5px] text-muted mb-1">
               {label}
             </div>
             {dayTodos.map((t) => (
               <div
                 key={t._id}
-                className="text-xs rounded-sm bg-surface-soft text-ink px-2 py-1 truncate"
+                className="text-xs font-light bg-surface-strong text-ink px-2 py-1 truncate"
                 title={t.title}
               >
                 {t.title}
@@ -53,7 +53,7 @@ export default function WeekGrid({ weeklyPlanId, todos }: WeekGridProps) {
             {openDay === day ? (
               <input
                 autoFocus
-                className="text-xs rounded-sm border border-hairline px-1.5 py-1 bg-canvas text-ink focus:outline-none focus:border-2 focus:border-ink"
+                className="text-xs border border-hairline px-1.5 py-1 bg-surface-strong text-ink focus:outline-none focus:border-2 focus:border-primary"
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 onKeyDown={(e) => {
@@ -68,7 +68,7 @@ export default function WeekGrid({ weeklyPlanId, todos }: WeekGridProps) {
             ) : (
               <button
                 onClick={() => setOpenDay(day)}
-                className="text-xs text-muted-soft text-left hover:text-ink transition-colors"
+                className="text-xs font-light text-muted-soft text-left hover:text-ink transition-colors"
               >
                 + 추가
               </button>

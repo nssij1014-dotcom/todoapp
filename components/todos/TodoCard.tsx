@@ -39,17 +39,17 @@ export default function TodoCard({ todo, onClick, overlay }: TodoCardProps) {
       {...(overlay ? {} : attributes)}
       {...(overlay ? {} : listeners)}
       onClick={onClick}
-      className="rounded-md border border-hairline bg-canvas p-4 cursor-grab active:cursor-grabbing hover:shadow-airbnb transition-shadow"
+      className="border border-hairline bg-surface-strong p-4 cursor-grab active:cursor-grabbing hover:border-primary transition-colors"
     >
-      <p className="text-sm font-medium text-ink">{todo.title}</p>
-      <div className="flex items-center gap-2 mt-1.5">
+      <p className="text-sm font-normal text-ink">{todo.title}</p>
+      <div className="flex items-center gap-2 mt-2">
         <PriorityBadge priority={todo.priority} />
         {todo.dueDate && (
           <span
             className={
               isOverdue(todo)
-                ? "text-[11px] text-error font-medium"
-                : "text-[11px] text-muted"
+                ? "text-[11px] font-bold text-error"
+                : "text-[11px] font-light text-muted"
             }
           >
             {new Date(todo.dueDate).toLocaleDateString("ko-KR", { month: "numeric", day: "numeric" })}

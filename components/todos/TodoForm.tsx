@@ -20,7 +20,8 @@ interface TodoFormProps {
 }
 
 const inputClass =
-  "w-full rounded-sm border border-hairline px-3 py-2.5 text-sm bg-canvas text-ink placeholder:text-muted-soft focus:outline-none focus:border-2 focus:border-ink";
+  "w-full border border-hairline px-3 py-2.5 text-sm font-light bg-surface-strong text-ink placeholder:text-muted-soft focus:outline-none focus:border-2 focus:border-primary";
+const labelClass = "text-xs font-bold uppercase tracking-[0.5px] block mb-1.5 text-muted";
 
 export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: TodoFormProps) {
   const { weeklyPlans, goals } = useStore();
@@ -55,7 +56,7 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <div>
-        <label className="text-sm font-medium block mb-1 text-ink">제목</label>
+        <label className={labelClass}>제목</label>
         <input
           className={inputClass}
           value={title}
@@ -65,7 +66,7 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
         />
       </div>
       <div>
-        <label className="text-sm font-medium block mb-1 text-ink">설명</label>
+        <label className={labelClass}>설명</label>
         <textarea
           className={inputClass}
           rows={2}
@@ -75,7 +76,7 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
       </div>
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-sm font-medium block mb-1 text-ink">우선순위</label>
+          <label className={labelClass}>우선순위</label>
           <select
             className={inputClass}
             value={priority}
@@ -87,7 +88,7 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
           </select>
         </div>
         <div>
-          <label className="text-sm font-medium block mb-1 text-ink">마감일</label>
+          <label className={labelClass}>마감일</label>
           <input
             type="date"
             className={inputClass}
@@ -99,7 +100,7 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
 
       {weeklyPlans.length > 0 && (
         <div>
-          <label className="text-sm font-medium block mb-1 text-ink">주간 계획 연결</label>
+          <label className={labelClass}>주간 계획 연결</label>
           <select
             className={inputClass}
             value={weeklyPlanId}
@@ -117,7 +118,7 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
 
       {goals.length > 0 && (
         <div>
-          <label className="text-sm font-medium block mb-1 text-ink">1년 목표 연결</label>
+          <label className={labelClass}>1년 목표 연결</label>
           <select
             className={inputClass}
             value={goalId}
@@ -138,7 +139,7 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
           <button
             type="button"
             onClick={onDelete}
-            className="px-4 h-11 text-sm font-medium rounded-sm border border-error text-error hover:bg-surface-soft transition-colors"
+            className="px-4 h-11 text-xs font-bold uppercase tracking-[1.5px] border border-hairline text-muted hover:border-error hover:text-error transition-colors"
           >
             삭제
           </button>
@@ -149,14 +150,14 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
           <button
             type="button"
             onClick={onCancel}
-            className="px-6 h-11 text-sm font-medium rounded-sm border border-ink text-ink hover:bg-surface-soft transition-colors"
+            className="px-6 h-11 text-xs font-bold uppercase tracking-[1.5px] border border-hairline text-body hover:border-primary hover:text-ink transition-colors"
           >
             취소
           </button>
           <button
             type="submit"
             disabled={submitting}
-            className="px-6 h-11 text-sm font-medium rounded-sm bg-primary text-on-primary hover:bg-primary-active transition-colors disabled:bg-primary-disabled disabled:cursor-not-allowed"
+            className="px-6 h-11 text-xs font-bold uppercase tracking-[1.5px] border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors disabled:opacity-40 disabled:pointer-events-none"
           >
             저장
           </button>

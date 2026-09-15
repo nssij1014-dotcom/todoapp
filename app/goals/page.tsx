@@ -38,19 +38,19 @@ export default function GoalsPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-[28px] leading-[1.43] font-bold text-ink">1년 목표</h1>
+        <h1 className="text-2xl font-bold uppercase tracking-[-0.5px] text-ink">1년 목표</h1>
         <button
           onClick={openCreate}
-          className="px-6 h-11 text-sm font-medium rounded-sm bg-primary text-on-primary hover:bg-primary-active transition-colors"
+          className="px-6 h-11 text-xs font-bold uppercase tracking-[1.5px] border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors"
         >
           + 새 목표
         </button>
       </div>
 
-      {goalsLoading && <p className="text-sm text-muted">불러오는 중...</p>}
+      {goalsLoading && <p className="text-sm font-light text-muted">불러오는 중...</p>}
 
       {!goalsLoading && goals.length === 0 && (
-        <p className="text-sm text-muted">
+        <p className="text-sm font-light text-muted">
           아직 목표가 없습니다. 새 목표를 추가해보세요.
         </p>
       )}

@@ -3,7 +3,7 @@ import { Priority } from "@/types";
 const CONFIG: Record<Priority, { label: string; className: string }> = {
   high: {
     label: "높음",
-    className: "bg-primary-disabled text-primary-active",
+    className: "bg-error/15 text-error",
   },
   medium: {
     label: "보통",
@@ -22,7 +22,7 @@ interface PriorityBadgeProps {
 export default function PriorityBadge({ priority }: PriorityBadgeProps) {
   const { label, className } = CONFIG[priority];
   return (
-    <span className={`text-[11px] px-1.5 py-0.5 rounded-full font-semibold ${className}`}>
+    <span className={`text-[10px] px-1.5 py-0.5 font-bold uppercase tracking-[0.5px] ${className}`}>
       {label}
     </span>
   );

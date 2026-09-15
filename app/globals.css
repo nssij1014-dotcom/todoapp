@@ -2,51 +2,60 @@
 
 @theme {
   /* Brand & accent */
-  --color-primary: #ff385c;
-  --color-primary-active: #e00b41;
-  --color-primary-disabled: #ffd1da;
-  --color-luxe: #460479;
-  --color-plus: #92174d;
+  --color-primary: #ffffff;
+  --color-on-primary: #000000;
+  --color-m-blue-light: #0066b1;
+  --color-m-blue-dark: #1c69d4;
+  --color-m-red: #e22718;
+  --color-electric-blue: #0653b6;
 
   /* Surface */
-  --color-canvas: #ffffff;
-  --color-surface-soft: #f7f7f7;
-  --color-surface-strong: #f2f2f2;
+  --color-canvas: #000000;
+  --color-surface-soft: #0d0d0d;
+  --color-surface-strong: #1a1a1a;
+  --color-surface-elevated: #262626;
+  --color-carbon-gray: #2b2b2b;
 
   /* Hairlines & borders */
-  --color-hairline: #dddddd;
-  --color-hairline-soft: #ebebeb;
-  --color-border-strong: #c1c1c1;
+  --color-hairline: #3c3c3c;
+  --color-hairline-soft: #262626;
+  --color-border-strong: #7e7e7e;
 
   /* Text */
-  --color-ink: #222222;
-  --color-body: #3f3f3f;
-  --color-muted: #6a6a6a;
-  --color-muted-soft: #929292;
-  --color-on-primary: #ffffff;
+  --color-ink: #ffffff;
+  --color-body: #bbbbbb;
+  --color-body-strong: #e6e6e6;
+  --color-muted: #7e7e7e;
+  --color-muted-soft: #5a5a5a;
 
   /* Semantic */
-  --color-error: #c13515;
-  --color-error-hover: #b32505;
-  --color-legal-link: #428bff;
+  --color-error: #f4b400;
+  --color-error-hover: #d99e00;
+  --color-success: #0fa336;
+  --color-legal-link: #7e7e7e;
 
   /* Type */
-  --font-sans: var(--font-inter), Circular, -apple-system, system-ui, Roboto,
-    "Helvetica Neue", sans-serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
 
-  /* Shape */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 14px;
-  --radius-xl: 32px;
-
-  /* Elevation */
-  --shadow-airbnb: 0 0 0 1px rgba(0, 0, 0, 0.02), 0 2px 6px 0 rgba(0, 0, 0, 0.04),
-    0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  /* Shape: near-zero everywhere, circular only for icon controls */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 }
 
 body {
   background: var(--color-canvas);
   color: var(--color-ink);
   font-family: var(--font-sans);
+}
+
+.m-stripe {
+  background: linear-gradient(
+    to right,
+    var(--color-m-blue-light),
+    var(--color-m-blue-dark),
+    var(--color-m-red)
+  );
 }

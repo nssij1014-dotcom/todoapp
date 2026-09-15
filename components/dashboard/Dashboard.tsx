@@ -33,22 +33,22 @@ export default function Dashboard() {
   }));
 
   return (
-    <div className="flex flex-col gap-8">
-      <h1 className="text-[28px] leading-[1.43] font-bold text-ink">대시보드</h1>
+    <div className="flex flex-col gap-10">
+      <h1 className="text-3xl font-bold uppercase tracking-[-0.5px] text-ink">대시보드</h1>
 
       <div>
-        <h2 className="text-base font-semibold text-ink mb-2">이번 주 계획</h2>
+        <h2 className="text-xs font-bold uppercase tracking-[1.5px] text-muted mb-3">이번 주 계획</h2>
         {!currentPlan ? (
-          <div className="rounded-md border border-hairline p-4 text-sm text-muted">
+          <div className="border border-hairline p-4 text-sm font-light text-body">
             아직 이번 주 계획이 없습니다.{" "}
-            <Link href="/weekly" className="text-primary hover:underline">
+            <Link href="/weekly" className="text-primary font-bold uppercase tracking-[0.5px] text-xs hover:underline">
               주간 계획 만들기
             </Link>
           </div>
         ) : (
-          <div className="rounded-md border border-hairline p-4 flex flex-col gap-3 hover:shadow-airbnb transition-shadow">
+          <div className="border border-hairline p-4 flex flex-col gap-3 hover:border-primary transition-colors">
             <div className="flex items-center justify-between">
-              <Link href={`/weekly/${currentPlan._id}`} className="font-semibold text-ink hover:underline">
+              <Link href={`/weekly/${currentPlan._id}`} className="font-bold uppercase tracking-[0.3px] text-ink hover:underline">
                 {formatWeekRange(currentPlan.weekStart)}
               </Link>
             </div>
@@ -57,7 +57,7 @@ export default function Dashboard() {
             </div>
             <div>
               {currentPlan.goals.length === 0 && (
-                <p className="text-sm text-muted">등록된 목표가 없습니다.</p>
+                <p className="text-sm font-light text-muted">등록된 목표가 없습니다.</p>
               )}
               {currentPlan.goals.map((g, i) => (
                 <WeeklyGoalItem
@@ -73,15 +73,15 @@ export default function Dashboard() {
       </div>
 
       <div>
-        <h2 className="text-base font-semibold text-ink mb-2">할 일 현황</h2>
-        <div className="grid grid-cols-3 gap-3 max-w-md">
+        <h2 className="text-xs font-bold uppercase tracking-[1.5px] text-muted mb-3">할 일 현황</h2>
+        <div className="grid grid-cols-3 gap-px bg-hairline max-w-md">
           {statusCounts.map(({ label, count }) => (
             <div
               key={label}
-              className="rounded-md border border-hairline bg-surface-soft p-4 text-center"
+              className="bg-surface-soft p-4 text-center"
             >
               <p className="text-2xl font-bold text-ink">{count}</p>
-              <p className="text-xs text-muted mt-1">{label}</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.5px] text-muted mt-1">{label}</p>
             </div>
           ))}
         </div>
@@ -89,7 +89,7 @@ export default function Dashboard() {
 
       {goals.length > 0 && (
         <div>
-          <h2 className="text-base font-semibold text-ink mb-2">목표별 이번 주 할 일</h2>
+          <h2 className="text-xs font-bold uppercase tracking-[1.5px] text-muted mb-3">목표별 이번 주 할 일</h2>
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 max-w-2xl">
             {goals.map((goal) => {
               const count = currentPlan
@@ -100,7 +100,7 @@ export default function Dashboard() {
                 <Link
                   key={goal._id}
                   href="/goals"
-                  className="flex items-center justify-between rounded-md border border-hairline px-3 py-2 text-sm text-ink hover:bg-surface-soft transition-colors"
+                  className="flex items-center justify-between border border-hairline px-3 py-2 text-sm font-light text-body hover:border-primary hover:text-ink transition-colors"
                 >
                   <span className="truncate">{goal.title}</span>
                   <span className="text-muted shrink-0 ml-2">

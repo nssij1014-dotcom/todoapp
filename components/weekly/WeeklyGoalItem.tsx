@@ -13,7 +13,7 @@ export default function WeeklyGoalItem({ text, done, onToggle }: WeeklyGoalItemP
         onChange={(e) => onToggle(e.target.checked)}
         className="h-4 w-4 accent-primary"
       />
-      <span className={done ? "line-through text-muted-soft" : "text-ink"}>
+      <span className={`text-sm font-light ${done ? "line-through text-muted-soft" : "text-ink"}`}>
         {text}
       </span>
     </label>

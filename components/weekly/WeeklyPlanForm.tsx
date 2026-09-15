@@ -17,7 +17,8 @@ interface WeeklyPlanFormProps {
 const MAX_GOALS = 5;
 
 const inputClass =
-  "w-full rounded-sm border border-hairline px-3 py-2.5 text-sm bg-canvas text-ink placeholder:text-muted-soft focus:outline-none focus:border-2 focus:border-ink";
+  "w-full border border-hairline px-3 py-2.5 text-sm font-light bg-surface-strong text-ink placeholder:text-muted-soft focus:outline-none focus:border-2 focus:border-primary";
+const labelClass = "text-xs font-bold uppercase tracking-[0.5px] block mb-1.5 text-muted";
 
 export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormProps) {
   const { goals } = useStore();
@@ -63,7 +64,7 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <div>
-        <label className="text-sm font-medium block mb-1 text-ink">주 시작일</label>
+        <label className={labelClass}>주 시작일</label>
         <input
           type="date"
           className={inputClass}
@@ -74,7 +75,7 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
       </div>
 
       <div>
-        <label className="text-sm font-medium block mb-1 text-ink">
+        <label className={labelClass}>
           이번 주 목표 (최대 {MAX_GOALS}개)
         </label>
         <div className="flex flex-col gap-2">
@@ -102,7 +103,7 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
           <button
             type="button"
             onClick={addGoalField}
-            className="text-xs mt-2 text-primary hover:underline"
+            className="text-xs font-bold uppercase tracking-[0.5px] mt-2 text-primary hover:underline"
           >
             + 목표 추가
           </button>
@@ -110,7 +111,7 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
       </div>
 
       <div>
-        <label className="text-sm font-medium block mb-1 text-ink">메모</label>
+        <label className={labelClass}>메모</label>
         <textarea
           className={inputClass}
           rows={3}
@@ -121,7 +122,7 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
 
       {goals.length > 0 && (
         <div>
-          <label className="text-sm font-medium block mb-1 text-ink">1년 목표 연결</label>
+          <label className={labelClass}>1년 목표 연결</label>
           <select
             className={inputClass}
             value={goalId}
@@ -137,20 +138,20 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
         </div>
       )}
 
-      {error && <p className="text-sm text-error">{error}</p>}
+      {error && <p className="text-sm font-light text-error">{error}</p>}
 
       <div className="flex justify-end gap-2 mt-2">
         <button
           type="button"
           onClick={onCancel}
-          className="px-6 h-11 text-sm font-medium rounded-sm border border-ink text-ink hover:bg-surface-soft transition-colors"
+          className="px-6 h-11 text-xs font-bold uppercase tracking-[1.5px] border border-hairline text-body hover:border-primary hover:text-ink transition-colors"
         >
           취소
         </button>
         <button
           type="submit"
           disabled={submitting}
-          className="px-6 h-11 text-sm font-medium rounded-sm bg-primary text-on-primary hover:bg-primary-active transition-colors disabled:bg-primary-disabled disabled:cursor-not-allowed"
+          className="px-6 h-11 text-xs font-bold uppercase tracking-[1.5px] border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors disabled:opacity-40 disabled:pointer-events-none"
         >
           저장
         </button>

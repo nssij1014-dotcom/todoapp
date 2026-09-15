@@ -5,8 +5,8 @@ export default async function Header() {
   const user = await getSessionUser();
 
   return (
-    <header className="h-14 shrink-0 border-b border-black/10 dark:border-white/10 flex items-center justify-between px-6">
-      <span className="text-sm text-black/60 dark:text-white/60">
+    <header className="h-20 shrink-0 border-b border-hairline bg-canvas flex items-center justify-between px-6">
+      <span className="text-sm text-muted">
         단기 실행과 장기 목표를 하나로 연결합니다
       </span>
       {user ? (
@@ -14,14 +14,14 @@ export default async function Header() {
           <Image
             src={user.avatarUrl}
             alt={user.username}
-            width={28}
-            height={28}
+            width={32}
+            height={32}
             className="rounded-full"
           />
-          <span className="text-sm text-black/60 dark:text-white/60">{user.username}</span>
+          <span className="text-sm text-body">{user.username}</span>
           <a
             href="/auth/logout"
-            className="text-sm px-2 py-1 rounded border border-black/15 dark:border-white/15"
+            className="text-sm px-4 h-9 inline-flex items-center rounded-sm border border-ink text-ink font-medium hover:bg-surface-soft transition-colors"
           >
             로그아웃
           </a>
@@ -29,7 +29,7 @@ export default async function Header() {
       ) : (
         <a
           href="/auth/github"
-          className="text-sm px-2 py-1 rounded border border-black/15 dark:border-white/15"
+          className="text-sm px-4 h-9 inline-flex items-center rounded-sm border border-ink text-ink font-medium hover:bg-surface-soft transition-colors"
         >
           GitHub로 로그인
         </a>

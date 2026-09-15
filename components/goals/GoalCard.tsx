@@ -14,13 +14,13 @@ export default function GoalCard({ goal, onEdit, onDelete }: GoalCardProps) {
   const [confirming, setConfirming] = useState(false);
 
   return (
-    <div className="rounded-lg border border-black/10 dark:border-white/10 p-4 flex flex-col gap-2">
+    <div className="rounded-md border border-hairline bg-canvas p-6 flex flex-col gap-2 hover:shadow-airbnb transition-shadow">
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-medium">{goal.title}</h3>
+        <h3 className="font-semibold text-ink">{goal.title}</h3>
         <div className="flex gap-1 shrink-0">
           <button
             onClick={onEdit}
-            className="text-xs px-2 py-1 rounded border border-black/15 dark:border-white/15"
+            className="text-xs h-8 px-3 rounded-sm border border-hairline text-ink hover:bg-surface-soft transition-colors"
           >
             수정
           </button>
@@ -28,13 +28,13 @@ export default function GoalCard({ goal, onEdit, onDelete }: GoalCardProps) {
             <>
               <button
                 onClick={onDelete}
-                className="text-xs px-2 py-1 rounded bg-red-600 text-white"
+                className="text-xs h-8 px-3 rounded-sm bg-error text-on-primary hover:bg-error-hover transition-colors"
               >
                 삭제 확인
               </button>
               <button
                 onClick={() => setConfirming(false)}
-                className="text-xs px-2 py-1 rounded border border-black/15 dark:border-white/15"
+                className="text-xs h-8 px-3 rounded-sm border border-hairline text-ink hover:bg-surface-soft transition-colors"
               >
                 취소
               </button>
@@ -42,7 +42,7 @@ export default function GoalCard({ goal, onEdit, onDelete }: GoalCardProps) {
           ) : (
             <button
               onClick={() => setConfirming(true)}
-              className="text-xs px-2 py-1 rounded border border-black/15 dark:border-white/15"
+              className="text-xs h-8 px-3 rounded-sm border border-hairline text-error hover:bg-surface-soft transition-colors"
             >
               삭제
             </button>
@@ -50,9 +50,9 @@ export default function GoalCard({ goal, onEdit, onDelete }: GoalCardProps) {
         </div>
       </div>
       {goal.description && (
-        <p className="text-sm text-black/60 dark:text-white/60">{goal.description}</p>
+        <p className="text-sm text-body">{goal.description}</p>
       )}
-      <ProgressBar percent={goal.progress} color="blue" thin />
+      <ProgressBar percent={goal.progress} color="ink" thin />
     </div>
   );
 }

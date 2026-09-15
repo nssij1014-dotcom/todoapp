@@ -36,15 +36,15 @@ export default function WeekGrid({ weeklyPlanId, todos }: WeekGridProps) {
         return (
           <div
             key={day}
-            className="rounded-md border border-black/10 dark:border-white/10 p-2 min-h-32 flex flex-col gap-1"
+            className="rounded-md border border-hairline bg-canvas p-2 min-h-32 flex flex-col gap-1"
           >
-            <div className="text-xs font-medium text-black/60 dark:text-white/60 mb-1">
+            <div className="text-xs font-semibold text-muted mb-1">
               {label}
             </div>
             {dayTodos.map((t) => (
               <div
                 key={t._id}
-                className="text-xs rounded bg-black/5 dark:bg-white/10 px-2 py-1 truncate"
+                className="text-xs rounded-sm bg-surface-soft text-ink px-2 py-1 truncate"
                 title={t.title}
               >
                 {t.title}
@@ -53,7 +53,7 @@ export default function WeekGrid({ weeklyPlanId, todos }: WeekGridProps) {
             {openDay === day ? (
               <input
                 autoFocus
-                className="text-xs rounded border border-black/15 dark:border-white/15 px-1.5 py-1 bg-transparent"
+                className="text-xs rounded-sm border border-hairline px-1.5 py-1 bg-canvas text-ink focus:outline-none focus:border-2 focus:border-ink"
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 onKeyDown={(e) => {
@@ -68,7 +68,7 @@ export default function WeekGrid({ weeklyPlanId, todos }: WeekGridProps) {
             ) : (
               <button
                 onClick={() => setOpenDay(day)}
-                className="text-xs text-black/40 dark:text-white/40 text-left hover:text-black dark:hover:text-white"
+                className="text-xs text-muted-soft text-left hover:text-ink transition-colors"
               >
                 + 추가
               </button>

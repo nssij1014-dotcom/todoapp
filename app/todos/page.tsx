@@ -58,10 +58,10 @@ export default function TodosPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-xl font-semibold">할 일</h1>
+        <h1 className="text-[28px] leading-[1.43] font-bold text-ink">할 일</h1>
         <button
           onClick={openCreate}
-          className="px-3 py-1.5 text-sm rounded-md bg-black text-white dark:bg-white dark:text-black"
+          className="px-6 h-11 text-sm font-medium rounded-sm bg-primary text-on-primary hover:bg-primary-active transition-colors"
         >
           + 새 할일
         </button>

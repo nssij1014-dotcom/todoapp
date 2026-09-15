@@ -26,19 +26,19 @@ export default function WeeklyListPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-xl font-semibold">주간 계획</h1>
+        <h1 className="text-[28px] leading-[1.43] font-bold text-ink">주간 계획</h1>
         <button
           onClick={() => setModalOpen(true)}
-          className="px-3 py-1.5 text-sm rounded-md bg-black text-white dark:bg-white dark:text-black"
+          className="px-6 h-11 text-sm font-medium rounded-sm bg-primary text-on-primary hover:bg-primary-active transition-colors"
         >
           + 새 주간 계획
         </button>
       </div>
 
-      {weeklyLoading && <p className="text-sm text-black/50">불러오는 중...</p>}
+      {weeklyLoading && <p className="text-sm text-muted">불러오는 중...</p>}
 
       {!weeklyLoading && recentPlans.length === 0 && (
-        <p className="text-sm text-black/50 dark:text-white/50">
+        <p className="text-sm text-muted">
           아직 주간 계획이 없습니다.
         </p>
       )}

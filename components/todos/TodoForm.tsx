@@ -19,6 +19,9 @@ interface TodoFormProps {
   onDelete?: () => void;
 }
 
+const inputClass =
+  "w-full rounded-sm border border-hairline px-3 py-2.5 text-sm bg-canvas text-ink placeholder:text-muted-soft focus:outline-none focus:border-2 focus:border-ink";
+
 export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: TodoFormProps) {
   const { weeklyPlans, goals } = useStore();
   const [title, setTitle] = useState(initial?.title ?? "");
@@ -52,9 +55,9 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <div>
-        <label className="text-sm font-medium block mb-1">제목</label>
+        <label className="text-sm font-medium block mb-1 text-ink">제목</label>
         <input
-          className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+          className={inputClass}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -62,9 +65,9 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
         />
       </div>
       <div>
-        <label className="text-sm font-medium block mb-1">설명</label>
+        <label className="text-sm font-medium block mb-1 text-ink">설명</label>
         <textarea
-          className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+          className={inputClass}
           rows={2}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -72,9 +75,9 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
       </div>
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-sm font-medium block mb-1">우선순위</label>
+          <label className="text-sm font-medium block mb-1 text-ink">우선순위</label>
           <select
-            className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+            className={inputClass}
             value={priority}
             onChange={(e) => setPriority(e.target.value as Priority)}
           >
@@ -84,10 +87,10 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
           </select>
         </div>
         <div>
-          <label className="text-sm font-medium block mb-1">마감일</label>
+          <label className="text-sm font-medium block mb-1 text-ink">마감일</label>
           <input
             type="date"
-            className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+            className={inputClass}
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
           />
@@ -96,9 +99,9 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
 
       {weeklyPlans.length > 0 && (
         <div>
-          <label className="text-sm font-medium block mb-1">주간 계획 연결</label>
+          <label className="text-sm font-medium block mb-1 text-ink">주간 계획 연결</label>
           <select
-            className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+            className={inputClass}
             value={weeklyPlanId}
             onChange={(e) => setWeeklyPlanId(e.target.value)}
           >
@@ -114,9 +117,9 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
 
       {goals.length > 0 && (
         <div>
-          <label className="text-sm font-medium block mb-1">1년 목표 연결</label>
+          <label className="text-sm font-medium block mb-1 text-ink">1년 목표 연결</label>
           <select
-            className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+            className={inputClass}
             value={goalId}
             onChange={(e) => setGoalId(e.target.value)}
           >
@@ -135,7 +138,7 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
           <button
             type="button"
             onClick={onDelete}
-            className="px-3 py-1.5 text-sm rounded-md border border-red-200 text-red-600"
+            className="px-4 h-11 text-sm font-medium rounded-sm border border-error text-error hover:bg-surface-soft transition-colors"
           >
             삭제
           </button>
@@ -146,14 +149,14 @@ export default function TodoForm({ initial, onSubmit, onCancel, onDelete }: Todo
           <button
             type="button"
             onClick={onCancel}
-            className="px-3 py-1.5 text-sm rounded-md border border-black/15 dark:border-white/15"
+            className="px-6 h-11 text-sm font-medium rounded-sm border border-ink text-ink hover:bg-surface-soft transition-colors"
           >
             취소
           </button>
           <button
             type="submit"
             disabled={submitting}
-            className="px-3 py-1.5 text-sm rounded-md bg-black text-white dark:bg-white dark:text-black disabled:opacity-50"
+            className="px-6 h-11 text-sm font-medium rounded-sm bg-primary text-on-primary hover:bg-primary-active transition-colors disabled:bg-primary-disabled disabled:cursor-not-allowed"
           >
             저장
           </button>

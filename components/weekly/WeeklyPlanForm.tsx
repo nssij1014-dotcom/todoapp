@@ -16,6 +16,9 @@ interface WeeklyPlanFormProps {
 
 const MAX_GOALS = 5;
 
+const inputClass =
+  "w-full rounded-sm border border-hairline px-3 py-2.5 text-sm bg-canvas text-ink placeholder:text-muted-soft focus:outline-none focus:border-2 focus:border-ink";
+
 export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormProps) {
   const { goals } = useStore();
   const [weekStart, setWeekStart] = useState(toDateInputValue(getWeekStart(new Date())));
@@ -60,10 +63,10 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <div>
-        <label className="text-sm font-medium block mb-1">주 시작일</label>
+        <label className="text-sm font-medium block mb-1 text-ink">주 시작일</label>
         <input
           type="date"
-          className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+          className={inputClass}
           value={weekStart}
           onChange={(e) => setWeekStart(e.target.value)}
           required
@@ -71,14 +74,14 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
       </div>
 
       <div>
-        <label className="text-sm font-medium block mb-1">
+        <label className="text-sm font-medium block mb-1 text-ink">
           이번 주 목표 (최대 {MAX_GOALS}개)
         </label>
         <div className="flex flex-col gap-2">
           {goalTexts.map((text, i) => (
             <div key={i} className="flex gap-2">
               <input
-                className="flex-1 rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+                className={`flex-1 ${inputClass}`}
                 value={text}
                 onChange={(e) => updateGoalText(i, e.target.value)}
                 placeholder={`목표 ${i + 1}`}
@@ -87,7 +90,7 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
                 <button
                   type="button"
                   onClick={() => removeGoalField(i)}
-                  className="px-2 text-black/50 dark:text-white/50"
+                  className="px-2 text-muted hover:text-ink transition-colors"
                 >
                   ✕
                 </button>
@@ -99,7 +102,7 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
           <button
             type="button"
             onClick={addGoalField}
-            className="text-xs mt-2 text-blue-600"
+            className="text-xs mt-2 text-primary hover:underline"
           >
             + 목표 추가
           </button>
@@ -107,9 +110,9 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
       </div>
 
       <div>
-        <label className="text-sm font-medium block mb-1">메모</label>
+        <label className="text-sm font-medium block mb-1 text-ink">메모</label>
         <textarea
-          className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+          className={inputClass}
           rows={3}
           value={memo}
           onChange={(e) => setMemo(e.target.value)}
@@ -118,9 +121,9 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
 
       {goals.length > 0 && (
         <div>
-          <label className="text-sm font-medium block mb-1">1년 목표 연결</label>
+          <label className="text-sm font-medium block mb-1 text-ink">1년 목표 연결</label>
           <select
-            className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+            className={inputClass}
             value={goalId}
             onChange={(e) => setGoalId(e.target.value)}
           >
@@ -134,20 +137,20 @@ export default function WeeklyPlanForm({ onSubmit, onCancel }: WeeklyPlanFormPro
         </div>
       )}
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-error">{error}</p>}
 
       <div className="flex justify-end gap-2 mt-2">
         <button
           type="button"
           onClick={onCancel}
-          className="px-3 py-1.5 text-sm rounded-md border border-black/15 dark:border-white/15"
+          className="px-6 h-11 text-sm font-medium rounded-sm border border-ink text-ink hover:bg-surface-soft transition-colors"
         >
           취소
         </button>
         <button
           type="submit"
           disabled={submitting}
-          className="px-3 py-1.5 text-sm rounded-md bg-black text-white dark:bg-white dark:text-black disabled:opacity-50"
+          className="px-6 h-11 text-sm font-medium rounded-sm bg-primary text-on-primary hover:bg-primary-active transition-colors disabled:bg-primary-disabled disabled:cursor-not-allowed"
         >
           저장
         </button>

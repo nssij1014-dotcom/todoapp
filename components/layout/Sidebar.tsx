@@ -14,8 +14,8 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-56 shrink-0 border-r border-black/10 dark:border-white/10 p-4">
-      <div className="text-lg font-semibold mb-6">할일 + 계획</div>
+    <aside className="w-56 shrink-0 border-r border-hairline bg-canvas p-4">
+      <div className="text-lg font-bold text-primary mb-6">할일 + 계획</div>
       <nav className="flex flex-col gap-1">
         {NAV_ITEMS.map((item) => {
           const active = pathname === item.href;
@@ -23,10 +23,10 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-md px-3 py-2 text-sm transition-colors ${
+              className={`rounded-full px-3 py-2 text-sm transition-colors ${
                 active
-                  ? "bg-black/10 dark:bg-white/10 font-medium"
-                  : "hover:bg-black/5 dark:hover:bg-white/5"
+                  ? "bg-surface-strong font-semibold text-ink"
+                  : "text-body hover:bg-surface-soft"
               }`}
             >
               {item.label}

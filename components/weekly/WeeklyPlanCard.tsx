@@ -13,11 +13,11 @@ export default function WeeklyPlanCard({ plan }: WeeklyPlanCardProps) {
   return (
     <Link
       href={`/weekly/${plan._id}`}
-      className="block rounded-lg border border-black/10 dark:border-white/10 p-4 hover:bg-black/[0.02] dark:hover:bg-white/[0.02]"
+      className="block rounded-md border border-hairline bg-canvas p-6 hover:shadow-airbnb transition-shadow"
     >
       <div className="flex items-center justify-between mb-2">
-        <span className="font-medium">{formatWeekRange(plan.weekStart)}</span>
-        <span className="text-xs text-black/50 dark:text-white/50">
+        <span className="font-semibold text-ink">{formatWeekRange(plan.weekStart)}</span>
+        <span className="text-xs text-muted">
           목표 {plan.goals.length}개
         </span>
       </div>

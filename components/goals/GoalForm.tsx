@@ -28,9 +28,9 @@ export default function GoalForm({ initial, onSubmit, onCancel }: GoalFormProps)
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <div>
-        <label className="text-sm font-medium block mb-1">제목</label>
+        <label className="text-sm font-medium block mb-1 text-ink">제목</label>
         <input
-          className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+          className="w-full rounded-sm border border-hairline px-3 py-2.5 text-sm bg-canvas text-ink placeholder:text-muted-soft focus:outline-none focus:border-2 focus:border-ink"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -38,9 +38,9 @@ export default function GoalForm({ initial, onSubmit, onCancel }: GoalFormProps)
         />
       </div>
       <div>
-        <label className="text-sm font-medium block mb-1">설명</label>
+        <label className="text-sm font-medium block mb-1 text-ink">설명</label>
         <textarea
-          className="w-full rounded-md border border-black/15 dark:border-white/15 px-3 py-2 text-sm bg-transparent"
+          className="w-full rounded-sm border border-hairline px-3 py-2.5 text-sm bg-canvas text-ink placeholder:text-muted-soft focus:outline-none focus:border-2 focus:border-ink"
           rows={3}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -50,14 +50,14 @@ export default function GoalForm({ initial, onSubmit, onCancel }: GoalFormProps)
         <button
           type="button"
           onClick={onCancel}
-          className="px-3 py-1.5 text-sm rounded-md border border-black/15 dark:border-white/15"
+          className="px-6 h-11 text-sm font-medium rounded-sm border border-ink text-ink hover:bg-surface-soft transition-colors"
         >
           취소
         </button>
         <button
           type="submit"
           disabled={submitting}
-          className="px-3 py-1.5 text-sm rounded-md bg-black text-white dark:bg-white dark:text-black disabled:opacity-50"
+          className="px-6 h-11 text-sm font-medium rounded-sm bg-primary text-on-primary hover:bg-primary-active transition-colors disabled:bg-primary-disabled disabled:cursor-not-allowed"
         >
           저장
         </button>
